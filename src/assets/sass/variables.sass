@@ -1,0 +1,20 @@
+$ArchivoBlack: 'Archivo Black', sans-serif
+$Archivo: 'Archivo', sans-serif
+$white: #FCFCFC
+$black: #1D1D1B
+$grey: #858484
+$darkGrey: #595958
+$large: 'max-width: 1440px'
+$tablet: 'max-width: 980px'
+$smPhone: 'max-width: 767px'
+$xsPhone: 'max-width: 480px'
+
+@mixin placeholder
+  &::-webkit-input-placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content

@@ -1,0 +1,56 @@
+@import 'variables'
+
+*
+  box-sizing: border-box
+
+  &:focus
+    outline: none
+
+html
+  position: relative
+  min-height: 100vh
+  height: auto
+
+body
+  height: 100%
+  color: $white
+  font-family: $Archivo
+  font-size: 14px
+  letter-spacing: 0.2px
+  background-color: $black
+  
+.content
+  width: 1440px
+  margin: auto
+  padding: 0 40px
+
+  @media ($large)
+    width: 980px
+  @media ($tablet)
+    width: 768px
+    padding: 0 30px
+  @media ($smPhone)
+    width: 100%
+    padding: 0 16px
+
+.arrow_right
+  width: 60px
+  height: 60px
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNDUuNzUgMzMuMjVIMC41VjI2Ljc1SDQ1Ljc1SDQ2Ljk1NzFMNDYuMTAzNiAyNS44OTY0TDI1LjQ1NzEgNS4yNUwzMCAwLjcwNzEwN0w1OS4yOTI5IDMwTDMwIDU5LjI5MjlMMjUuNDU3MSA1NC43NUw0Ni4xMDM2IDM0LjEwMzZMNDYuOTU3MSAzMy4yNUg0NS43NVoiIGZpbGw9IiMxRDFEMUIiIHN0cm9rZT0iIzU5NTk1OCIvPjwvc3ZnPg==)
+  background-size: contain
+  cursor: pointer
+  position: absolute
+  right: 0
+  top: 50%
+  transform: translateY(-50%)
+  transition: 0.4s
+  
+  &:hover
+    right: 5px
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNDUuNzUgMzMuMjVIMC41VjI2Ljc1SDQ1Ljc1SDQ2Ljk1NzFMNDYuMTAzNiAyNS44OTY0TDI1LjQ1NzEgNS4yNUwzMCAwLjcwNzEwN0w1OS4yOTI5IDMwTDMwIDU5LjI5MjlMMjUuNDU3MSA1NC43NUw0Ni4xMDM2IDM0LjEwMzZMNDYuOTU3MSAzMy4yNUg0NS43NVoiIGZpbGw9IiMxRDFEMUIiIHN0cm9rZT0iI0ZDRkNGQyIvPjwvc3ZnPg==)
+  
+  @media ($smPhone)
+    width: 40px
+    height: 40px
+    top: 0
+    transform: none
