@@ -1,7 +1,7 @@
 {
-  "name": "vue-2-webpack-4-boilerplate",
+  "name": "sound-design",
   "version": "1.0.0",
-  "description": "Vue 2 application with webpack 4 boilerplate",
+  "description": "Sound design like a boss",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --progress",
     "staging": "cross-env NODE_ENV=staging webpack",
@@ -9,13 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/samteb/vue-2-webpack-4-boilerplate"
+    "url": "https://github.com/YanaKotenko/soundCreate"
   },
   "keywords": [
     "Vue",
     "Webpack 4"
   ],
-  "author": "samteb <sam.teboul@gmail.com>",
   "license": "MIT",
   "homepage": "./",
   "dependencies": {
