@@ -16,7 +16,7 @@ const store = new Vuex.Store({
       category: 'composing',
       pageName: 'composing',
       flag: 'video',
-      src: 'alien.mp4',
+      src: 'on_the_shore.mp4',
       poster: 'posterAlien',
     },{
       name: 'On the Shore of a Dream',

@@ -29,7 +29,7 @@
 <script>
 	import UiSounds from '../components/UiSounds'
 	// для подгрузки видосов
-	import alien from '../assets/videos/alien.mp4';
+	import alien from '../assets/videos/on_the_shore.mp4';
 	import shore from '../assets/videos/on_the_shore.mp4';
 	import foam from '../assets/videos/foam.mp4';
 	import oddDays from '../assets/videos/odd_days.mp4';
