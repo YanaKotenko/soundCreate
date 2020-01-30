@@ -1,28 +1,48 @@
 <template lang='pug'>
 .contact
-  .contact_equalizer
-    .contact_equalizer__line._line1
-    .contact_equalizer__line._line2
-    .contact_equalizer__line._line3
-    .contact_equalizer__line._line4
-    .contact_equalizer__line._line5
-    .contact_equalizer__line._line6
-    .contact_equalizer__line._line7
-    .contact_equalizer__line._line8
-    .contact_equalizer__line._line9
-    .contact_equalizer__line._line10
-  
+  .contact_equalizer_wrap
+    .contact_equalizer(ref="lineWrap")
+      .contact_equalizer__line(
+        v-for='(line, i) in linesArray'
+        ref="line"
+      )
   .contact_title 
     | Let’s make
     span something
     .contact_title__text wonderful together.
-
   a.contact_email(href='mailto:hello@soundcreate.pro') hello@soundcreate.pro
 </template>
 
 <script>
   export default {
-    name: 'Contact'
+    name: 'Contact',
+    data() {
+      return {
+        linesArray: [],
+        count: 70,
+        min: 2,
+        max: 10
+      }
+    },
+    methods: {
+      getRandomInt(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+    },
+		created() {
+      for (let i = 0; i < this.count; i++) {
+        this.linesArray.push(i);
+      }
+    },
+    mounted() {
+      setTimeout(() => {
+        this.$refs.lineWrap.style.transform = 'translateX(0)'
+      }, 500)
+      
+      for (let i = 0; i < this.count; i++) {
+        this.$refs.line[i].style.animationDuration = `${this.getRandomInt(this.min, this.max)}s`;
+      }
+    }
   };
 </script>
 
@@ -38,41 +58,25 @@
     // высота контентной части страниц за вычетом высоты хедера и футера
     min-height: calc(100vh - 8vh - 7vh)
 
+    &_equalizer_wrap
+      overflow: hidden
+
     &_equalizer
+      transform: translateX(100%)
+      transition: 5s
+      animation-timing-function: ease-in
 
       &__line
         width: 4px
         height: 130px
         background: $darkGrey
         display: inline-block
-        margin-right: 2px
+        margin-right: 4px
         animation-iteration-count: infinite
         animation-direction: alternate
-        animation-duration: 5s
         animation-timing-function: linear
         animation-name: equalizer
         animation-fill-mode: forwards
-
-        &._line1
-          animation-duration: 5.6s
-        &._line2
-          animation-duration: 5s
-        &._line3
-          animation-duration: 6s
-        &._line4
-          animation-duration: 2s
-        &._line5
-          animation-duration: 4s
-        &._line6
-          animation-duration: 3s
-        &._line7
-          animation-duration: 1s
-        &._line8
-          animation-duration: 4.3s
-        &._line9
-          animation-duration: 2.7s
-        &._line10
-          animation-duration: 4.9s
 
     &_title
       font-weight: 600
@@ -103,8 +107,12 @@
   @keyframes equalizer
     0%
       transform: scaleY(1)
+    25%
+      transform: scaleY(.25)
     50%
       transform: scaleY(.5)
+    75%
+      transform: scaleY(.75)
     100%
       transform: scaleY(1)
 

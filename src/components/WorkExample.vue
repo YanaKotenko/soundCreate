@@ -291,5 +291,4 @@
 			@media ($smPhone)
 				right: 16px
 
-	
 </style>

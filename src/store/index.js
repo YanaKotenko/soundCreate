@@ -116,11 +116,7 @@ const store = new Vuex.Store({
       '1565.mp3',
     ],
   },
-  getters: {
-    // activeWork: state => {
-    //   return state.works.find(c => c.value === state.policyDuration).label
-    // },
-  },
+  getters: {},
   mutations: {
     isWidthMobile(state) {
       state.mobile = window.innerWidth <= 767 ? true : false
@@ -144,11 +140,7 @@ const store = new Vuex.Store({
       state.activeWork = name;
     },
   },
-  actions: {
-    // setWorkPage({ commit, dispatch, getters }, policyType) {
-    //   commit('setWorkPage', policyType)
-    // },
-  }
+  actions: {}
 })
 
 export default store

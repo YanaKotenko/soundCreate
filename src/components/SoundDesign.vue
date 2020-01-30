@@ -39,13 +39,7 @@ div
 				this.$store.commit('openWorkExample')
 				this.$store.commit('setActiveWork', activeObj)
 			}
-		},
-		created() {
-			console.log('created');
-		},
-		mounted() {
-			console.log('mounted');
-		},
+		}
 	};
 </script>
 

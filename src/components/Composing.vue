@@ -7,7 +7,7 @@ div
 			@click="setPage('soundDesign')"
 		)
 	.works
-		.works_list(ref='list')
+		.works_list
 			.works_list__item(
 				v-for='(work, i) in works'
 				v-if="work.pageName === 'composing'"
@@ -40,14 +40,7 @@ div
 				this.$store.commit('openWorkExample')
 				this.$store.commit('setActiveWork', activeObj)
 			},
-    },
-		created() {
-			console.log('created');
-		},
-		mounted() {
-			console.log('mounted');
-			// this.$refs.list.classList.add('active');
-		},
+    }
 	};
 </script>
 
