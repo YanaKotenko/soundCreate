@@ -13,11 +13,11 @@ export const showElements = (element) => {
 export const hideElements = (element) => {
 	setTimeout(() => {
 		element.list.style.height = '0'
-	}, 200)
+	}, 600)
 	setTimeout(() => {
 		element.img.style.height = '0'
 	}, 400)
 	setTimeout(() => {
 		element.title.style.transform = 'translateY(-100%)'
-	}, 600)
+	}, 200)
 }
