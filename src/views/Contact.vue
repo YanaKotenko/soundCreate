@@ -60,6 +60,7 @@
 
     &_equalizer_wrap
       overflow: hidden
+      margin-bottom: 50px
 
     &_equalizer
       transform: translateX(100%)
