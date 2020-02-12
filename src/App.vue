@@ -34,15 +34,6 @@
       isOpenWorkExample() {
         return this.$store.state.workExamplePopup
       },
-      // isTablet() {
-      //   return this.$store.state.tablet
-      // },
-      // isMobile() {
-      //   return this.$store.state.mobile
-      // },
-      // isDesktop() {
-      //   return this.$store.state.desktop
-      // },
     },
     methods: {
       getMobileWidth() {

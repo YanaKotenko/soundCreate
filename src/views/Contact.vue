@@ -19,9 +19,16 @@
     data() {
       return {
         linesArray: [],
-        count: 70,
         min: 2,
         max: 10
+      }
+    },
+    computed: {
+      isMobile() {
+        return this.$store.state.mobile
+      },
+      linesCount() {
+        return this.isMobile ? 35 : 70
       }
     },
     methods: {
@@ -30,7 +37,7 @@
       }
     },
 		created() {
-      for (let i = 0; i < this.count; i++) {
+      for (let i = 0; i < this.linesCount; i++) {
         this.linesArray.push(i);
       }
     },
@@ -39,7 +46,7 @@
         this.$refs.lineWrap.style.transform = 'translateX(0)'
       }, 500)
       
-      for (let i = 0; i < this.count; i++) {
+      for (let i = 0; i < this.linesCount; i++) {
         this.$refs.line[i].style.animationDuration = `${this.getRandomInt(this.min, this.max)}s`;
       }
     }
@@ -61,6 +68,8 @@
     &_equalizer_wrap
       overflow: hidden
       margin-bottom: 50px
+      @media ($smPhone)
+        margin-bottom: 20px
 
     &_equalizer
       transform: translateX(100%)
@@ -78,6 +87,8 @@
         animation-timing-function: linear
         animation-name: equalizer
         animation-fill-mode: forwards
+        @media ($smPhone)
+          height: 90px
 
     &_title
       font-weight: 600

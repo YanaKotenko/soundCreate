@@ -24,7 +24,7 @@
 </template>
 
 <script>
-	import { hideElements, showElements } from '../utils'
+	import { hideWorkElements, showWorkElements } from '../utils'
 
 	export default {
 		name: 'Composing',
@@ -32,24 +32,31 @@
 			works() {
 				return this.$store.state.works
 			},
+      isMobile() {
+        return this.$store.state.mobile
+      },
 		},
 		methods: {
-			setPage(pageName) {
-				hideElements(this.$refs);
+			setPage(pageName) {				
+				hideWorkElements(this.$refs);
 
 				setTimeout(() => {
 					this.$store.commit('setWorkPage', pageName);
-				}, 1000)
+				}, 1000);
 			},
 			openWorkExample(name) {
-				const activeObj = this.works.find(e => e.name === name);				
+				hideWorkElements(this.$refs);
 
-				this.$store.commit('openWorkExample')
-				this.$store.commit('setActiveWork', activeObj)
+				setTimeout(() => {
+					const activeObj = this.works.find(e => e.name === name);				
+
+					this.$store.commit('openWorkExample')
+					this.$store.commit('setActiveWork', activeObj)
+				}, 1000);
 			},
 		},
 		mounted() {
-      showElements(this.$refs);
+      showWorkElements(this.$refs, this.isMobile);
 		},
 	};
 </script>
@@ -66,5 +73,7 @@
 		margin-right: 16px
 		background-size: contain
 		background-repeat: no-repeat
+		@media ($smPhone)
+			margin-top: 30px
 
 </style>

@@ -1,24 +1,24 @@
 <template lang='pug'>
   .content
-    .about_title
+    .about_title(ref='aboutTitle')
       .about_title__img
       .about_title__text creative audio studio from Russia.
     .about_text
       | Soundcreate is small but ambitious creative audio studio specializing in creating music and sound design for commercial, movie, motion graphics and exhibitions. We focus on giving clients completely unique experiences. Through music and sound, we elevate the art and effectiveness of brand media.
     .about_grid
-      .about_grid__col
+      .about_grid__col(ref='aboutImg1')
         img(:src="require('../assets/images/jenya.png')")
         .about_description__name Evgeny Gavrilov
         .about_description__position Composer
-      .about_grid__col
+      .about_grid__col(ref='aboutImg2')
         img(:src="require('../assets/images/misha.png')")
         .about_description__name Mikhael Gavrilov
         .about_description__position Sound designer, сomposer
-      .about_grid__col
+      .about_grid__col(ref='aboutImg3')
         img(:src="require('../assets/images/danil.png')")
         .about_description__name Daniil Sharomov
         .about_description__position Sound designer, сomposer
-    .about_main_img
+    .about_main_img(ref='aboutMainImg')
       img(:src="require('../assets/images/about.png')")
 
     .about_email
@@ -27,8 +27,13 @@
 </template>
 
 <script>
+  import { hideAboutElements, showAboutElements } from '../utils'
+
   export default {
-    name: 'About'
+    name: 'About',
+    mounted() {
+      // showAboutElements(this.$refs);
+		},
   };
 </script>
 
