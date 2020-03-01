@@ -27,13 +27,8 @@
 </template>
 
 <script>
-  import { hideAboutElements, showAboutElements } from '../utils'
-
   export default {
     name: 'About',
-    mounted() {
-      // showAboutElements(this.$refs);
-		},
   };
 </script>
 

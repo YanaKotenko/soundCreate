@@ -1,4 +1,4 @@
-export const slideIn = (element) => {
+export const slideIn = (element, isMobile) => {
 	setTimeout(() => {
 		element.list.style.transform = 'translateX(0)'
 	}, 100)
@@ -9,7 +9,7 @@ export const slideIn = (element) => {
 		element.title.style.transform = 'translateX(0)'
 	}, 300)
 }
-export const slideOut = (element) => {
+export const slideOut = (element, isMobile) => {
 	setTimeout(() => {
 		element.list.style.transform = 'translateX(-400%)'
 	}, 100)
@@ -20,3 +20,4 @@ export const slideOut = (element) => {
 		element.title.style.transform = 'translateX(-400%)'
 	}, 300)
 }
+export const TIMEOUT_SPEED = 500

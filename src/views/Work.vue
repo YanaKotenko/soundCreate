@@ -48,6 +48,8 @@ div
     display: flex
     // высота контентной части страниц за вычетом высоты хедера и футера
     min-height: calc(100vh - 8vh - 7vh)
+    @media ($large)
+      min-height: auto
 
   .page_container_works
     display: flex

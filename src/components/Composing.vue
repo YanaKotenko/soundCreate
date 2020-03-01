@@ -1,7 +1,7 @@
 <template lang='pug'>
-.works_wrapper
+div
 	.works_title(ref='title')
-		.works_title__img
+		.works_title__img composing
 		.works_title__text original music for your project
 		.arrow_right(
 			@click="setPage('soundDesign')"
@@ -24,7 +24,8 @@
 </template>
 
 <script>
-	import { hideWorkElements, showWorkElements } from '../utils'
+	import { hideWorkElements, showWorkElements, slideOut, slideIn } from '../utils'
+	import { TIMEOUT_SPEED } from '../constants'
 
 	export default {
 		name: 'Composing',
@@ -38,42 +39,28 @@
 		},
 		methods: {
 			setPage(pageName) {				
-				hideWorkElements(this.$refs);
+				slideOut(this.$refs);
 
 				setTimeout(() => {
 					this.$store.commit('setWorkPage', pageName);
-				}, 1000);
+				}, TIMEOUT_SPEED);
 			},
 			openWorkExample(name) {
-				hideWorkElements(this.$refs);
-
 				setTimeout(() => {
 					const activeObj = this.works.find(e => e.name === name);				
 
 					this.$store.commit('openWorkExample')
 					this.$store.commit('setActiveWork', activeObj)
-				}, 1000);
+				}, TIMEOUT_SPEED);
 			},
 		},
 		mounted() {
-      showWorkElements(this.$refs, this.isMobile);
+      slideIn(this.$refs, this.isMobile);
 		},
 	};
 </script>
 
 <style lang='sass' scoped>
 	@import '../assets/sass/variables'
-
-	.works_title__img
-		background-image: url('../assets/images/sign_composing.svg')
-		width: 196px
-		height: 36px
-		display: inline-block
-		vertical-align: middle
-		margin-right: 16px
-		background-size: contain
-		background-repeat: no-repeat
-		@media ($smPhone)
-			margin-top: 30px
 
 </style>

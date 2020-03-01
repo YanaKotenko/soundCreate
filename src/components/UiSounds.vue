@@ -60,9 +60,9 @@
 
 			&:after
 				background: url('../assets/images/play.svg') no-repeat
-				width: 16px
-				height: 18px
-				transform: translateX(-50%) translateY(-50%)
+				width: 14px
+				height: 16px
+				transform: translateX(-36%) translateY(-50%)
 
 			&:before
 				width: 10px

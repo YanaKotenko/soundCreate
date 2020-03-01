@@ -1,7 +1,7 @@
 <template lang='pug'>
 .contact
   .contact_equalizer_wrap
-    .contact_equalizer(ref="lineWrap")
+    .contact_equalizer
       .contact_equalizer__line(
         v-for='(line, i) in linesArray'
         ref="line"
@@ -42,10 +42,6 @@
       }
     },
     mounted() {
-      setTimeout(() => {
-        this.$refs.lineWrap.style.transform = 'translateX(0)'
-      }, 500)
-      
       for (let i = 0; i < this.linesCount; i++) {
         this.$refs.line[i].style.animationDuration = `${this.getRandomInt(this.min, this.max)}s`;
       }
@@ -72,8 +68,6 @@
         margin-bottom: 20px
 
     &_equalizer
-      transform: translateX(100%)
-      transition: 5s
       animation-timing-function: ease-in
 
       &__line
