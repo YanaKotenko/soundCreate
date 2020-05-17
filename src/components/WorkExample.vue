@@ -31,15 +31,17 @@
 	// для подгрузки видосов
 	import alien from '../assets/videos/on_the_shore.mp4';
 	import shore from '../assets/videos/on_the_shore.mp4';
-	import foam from '../assets/videos/foam.mp4';
+	import banksy from '../assets/videos/banksy.mp4';
+	import calves from '../assets/videos/calves.mp4';
 	import oddDays from '../assets/videos/odd_days.mp4';
 	import pulse from '../assets/videos/pulse.mp4';
 	// для подгрузки постеров на видео
 	import posterAlien from '../assets/images/poster_alien.png';
 	import posterShore from '../assets/images/poster_shore.png';
-	import posterFoam from '../assets/images/poster_foam.png';
+	import posterBanksy from '../assets/images/poster_banksy.png';
 	import posterOdd from '../assets/images/poster_odd.png';
 	import posterPulse from '../assets/images/poster_pulse.png';
+	import posterCalves from '../assets/images/poster_calves.png';
 
 	export default {
 		name: 'WorkExample',
@@ -49,7 +51,8 @@
 				posters: {
 					posterShore, 
 					posterAlien,
-					posterFoam,
+					posterBanksy,
+					posterCalves,
 					posterOdd,
 					posterPulse
 				}
