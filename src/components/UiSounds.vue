@@ -6,7 +6,7 @@
 		:key='index'
 	) 
 		audio(preload='metadata' ref='track')
-			source(:src="require(`../assets/audio/${item}`)" type='audio/mp3')
+			source(:src="require(`../assets/audio/uiSounds/${item}`)" type='audio/mp3')
 
 </template>
 
@@ -33,9 +33,11 @@
 	@import '../assets/sass/variables'
 
 	.ui_sounds
-		width: 650px
+		width: 834px
 		margin: auto
 		text-align: center
+		@media ($extraLarge)
+			width: 650px
 		@media ($smPhone)
 			padding-top: 80px
 
@@ -43,14 +45,17 @@
 			display: inline-block
 			vertical-align: middle
 			margin: 0 8px 16px 8px
-			width: 76px
-			height: 76px
+			width: 102px
+			height: 102px
 			background: #858484
 			cursor: pointer
 			position: relative
 			overflow: hidden
 			transition: 0.6s
 			border-radius: 6px
+			@media ($extraLarge)
+				width: 76px
+				height: 76px
 
 			&:after, &:before
 				content: ''
@@ -60,9 +65,13 @@
 
 			&:after
 				background: url('../assets/images/play.svg') no-repeat
-				width: 14px
-				height: 16px
+				width: 18px
+				height: 21px
 				transform: translateX(-36%) translateY(-50%)
+				background-size: contain
+				@media ($extraLarge)
+					width: 14px
+					height: 16px
 
 			&:before
 				width: 10px

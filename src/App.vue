@@ -69,13 +69,15 @@
     height: 100%
     // padding-bottom: 76px
     position: relative
+    @media ($smPhone)
+      padding-top: 65px
 
   .load_images
     opacity: 0
     height: 0
     visibility: hidden
     &:after
-      content: url('./assets/images/micro.svg') url('./assets/images/sign_design.svg') url('./assets/images/sign_composing.svg') url('./assets/images/sint.svg') url('./assets/images/sign_music.svg') url('./assets/images/pult.svg')
+      content: url('./assets/images/micro.svg') url('./assets/images/sint.svg') url('./assets/images/pult.svg')
       position: absolute
       left: -2000px
 
@@ -84,6 +86,11 @@
     padding: 32px 0
     @media ($smPhone)
       padding: 24px 0
+      position: fixed
+      width: 100%
+      z-index: 3
+      background-color: $black
+      top: 0
 
   .flex_wrapper
     display: flex

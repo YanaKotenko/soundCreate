@@ -1,13 +1,13 @@
 <template lang='pug'>
-div
-	.works_title(ref='title')
-		.works_title__img sound design
-		.works_title__text original music for your project
+.works_container(ref="container")
+	.works_title
+		.works_title__grey sound design
+		.works_title__white original music for your project
 		.arrow_right(
 			@click="setPage('musicProduction')"
 		)
 	.works
-		.works_list_wrap(ref='list')
+		.works_list_wrap
 			.works_list
 				.works_list__item(
 					v-for='(work, i) in works'
@@ -18,12 +18,11 @@ div
 				)
 					.works_list__title {{ work.name }}
 					.works_list__subtitle {{ work.description }}
-		.works_img(ref='img')
+		.works_img
 			img(:src="require('../assets/images/micro.svg')")
 </template>
 
 <script>
-	import { hideWorkElements, showWorkElements, slideOut, slideIn } from '../utils'
 	import { TIMEOUT_SPEED } from '../constants'
 
 	export default {
@@ -38,13 +37,15 @@ div
 		},
 		methods: {
 			setPage(pageName) {
-				slideOut(this.$refs)
+				this.$refs.container.style.opacity = '0';
 
 				setTimeout(() => {
 					this.$store.commit('setWorkPage', pageName);
 				}, TIMEOUT_SPEED)
 			},
 			openWorkExample(name) {
+				const activeObj = this.works.find(e => e.name === name);				
+
 				setTimeout(() => {
 					const activeObj = this.works.find(e => e.name === name);				
 
@@ -54,7 +55,7 @@ div
 			},
 		},
 		mounted() {
-			slideIn(this.$refs, this.isMobile)
+			this.$refs.container.style.opacity = '1';
 		},
 	};
 </script>

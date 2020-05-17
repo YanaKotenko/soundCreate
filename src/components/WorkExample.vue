@@ -1,23 +1,30 @@
 <template lang='pug'>
 .examples
 	.content
+		.examples__category._mobile(v-if='isMobile') {{ activeWork.category }}
 		.examples_footer__close(@click='closeWorkExample(activeWork.pageName)')
 	.examples_content
-		.videoBox(v-if="activeWork.flag === 'video'")
-			.play_button(ref='playBtn' @click='playPauseVideo') play
+		.video_box(v-if="activeWork.flag === 'video'")
+			.play_button(ref='playVideoBtn' @click='playPauseVideo') play
 			video(@click='playPauseVideo' ref='video' :poster='posters[activeWork.poster]')
 				source(:src='activeWork.src' type='video/mp4')
 
 		div(v-if="activeWork.flag === 'ui'")
 			UiSounds
 
-		.examples_soundcloud(v-if="activeWork.flag === 'frame'")
-			iframe(scrolling="no" frameborder="no" allow="autoplay" :src='activeWork.src')
+		.examples_audio(v-if="activeWork.flag === 'audio'")
+			.audio_box
+				.audio_poster
+					img(:src='posters[activeWork.poster]' @click='playPauseAudio')
+					.play_button(ref='playAudioBtn' @click='playPauseAudio') play
+				a.audio_link(:href='activeWork.url' target='_blank') Apple Music >
+				audio(preload='metadata' ref='audio')
+					source(:src="require(`../assets/audio/${activeWork.src}`)" type='audio/mp3')
 	.examples_footer
 		.content
 			.examples_footer__title
 				.examples_footer__name_wrap
-					.examples_footer__category {{ activeWork.category }}
+					.examples__category._footer(v-if='!isMobile') {{ activeWork.category }}
 					.examples_footer__name {{ activeWork.name }}
 				.examples_footer__description {{ activeWork.description }}
 			.examples_footer__nav
@@ -36,12 +43,15 @@
 	import oddDays from '../assets/videos/odd_days.mp4';
 	import pulse from '../assets/videos/pulse.mp4';
 	// для подгрузки постеров на видео
-	import posterAlien from '../assets/images/poster_alien.png';
-	import posterShore from '../assets/images/poster_shore.png';
-	import posterBanksy from '../assets/images/poster_banksy.png';
-	import posterOdd from '../assets/images/poster_odd.png';
-	import posterPulse from '../assets/images/poster_pulse.png';
-	import posterCalves from '../assets/images/poster_calves.png';
+	import posterAlien from '../assets/images/poster_alien.jpg';
+	import posterShore from '../assets/images/poster_shore.jpg';
+	import posterBanksy from '../assets/images/poster_banksy.jpg';
+	import posterOdd from '../assets/images/poster_odd.jpg';
+	import posterCalves from '../assets/images/poster_calves.jpg';
+	import posterBuerakApartments from '../assets/images/poster_buerak_apartments.jpg';
+	import posterBuerakDances from '../assets/images/poster_buerak_dances.jpg';
+	import posterBuerakModern from '../assets/images/poster_buerak_modern.jpg';
+	import posterSalut from '../assets/images/poster_salut.jpg';
 
 	export default {
 		name: 'WorkExample',
@@ -54,7 +64,10 @@
 					posterBanksy,
 					posterCalves,
 					posterOdd,
-					posterPulse
+					posterBuerakApartments,
+					posterBuerakDances,
+					posterBuerakModern,
+					posterSalut,
 				}
 			};
 		},
@@ -65,6 +78,9 @@
 			activeWork() {
 				return this.$store.state.activeWork
 			},
+			isMobile() {
+        return this.$store.state.mobile
+      },
 		},
 		methods: {
 			closeWorkExample(workPageName) {
@@ -74,15 +90,23 @@
 			},
 			changeProject(int) {
 				const video = this.$refs.video;
-				const playBtn = this.$refs.playBtn;
+				const audio = this.$refs.audio;
+				const playVideoBtn = this.$refs.playVideoBtn;
+				const playAudioBtn = this.$refs.playAudioBtn;
 				const index = this.works.findIndex(obj => obj.name === this.activeWork.name) + int;
 
-				if(playBtn) {
-					playBtn.style.display = 'block';
+				if(playVideoBtn) {
+					playVideoBtn.style.display = 'block';
+				}
+				if(playAudioBtn) {
+					playAudioBtn.style.display = 'block';
 				}
 
 				if(video) {
 					video.load();
+				}
+				if(audio) {
+					audio.load();
 				}
 
 				if(index >= 0 && index <= this.works.length - 1) {
@@ -91,14 +115,26 @@
 			},
 			playPauseVideo() {
 				const video = this.$refs.video;
-				const playBtn = this.$refs.playBtn;
+				const playVideoBtn = this.$refs.playVideoBtn;
 
 				if (video.paused) {
 					video.play();
-					playBtn.style.display = 'none';
+					playVideoBtn.style.display = 'none';
 				} else {
 					video.pause();
-					playBtn.style.display = 'block';
+					playVideoBtn.style.display = 'block';
+				}
+			},
+			playPauseAudio() {
+				const audio = this.$refs.audio;
+				const playAudioBtn = this.$refs.playAudioBtn;
+
+				if (audio.paused) {
+					audio.play();
+					playAudioBtn.style.display = 'none';
+				} else {
+					audio.pause();
+					playAudioBtn.style.display = 'block';
 				}
 			}
     }
@@ -110,8 +146,11 @@
 	@import '../assets/sass/default'
 
 	video
-		width: 730px
-		height: 410px
+		width: 1032px
+		height: 580px
+		@media ($extraLarge)
+			width: 730px
+			height: 410px
 		@media ($smPhone)
 			width: 100%
 			padding: 0 16px
@@ -120,8 +159,31 @@
 		width: 300px
 		height: 300px
 
-	.videoBox
+	.video_box
 		position: relative
+
+	.audio
+		&_box
+			width: 445px
+			text-align: center
+			@media ($extraLarge)
+				width: 309px
+			@media ($tablet)
+				width: 344px
+			@media ($xsPhone)
+				width: 200px
+
+		&_poster
+			position: relative
+			margin-bottom: 24px
+
+			img
+				width: 100%
+
+		&_link
+			display: inline-block
+			color: $grey
+			text-decoration: none
 
 	.play_button
 		font-weight: 600
@@ -164,6 +226,27 @@
 			@media ($smPhone)
 				padding: 80px 0 60px
 
+		&__category
+			font-weight: bold
+			font-size: 16px
+			letter-spacing: -0.1px
+			color: #E8E8E8
+			border: 1px solid #E8E8E8
+			border-radius: 4px
+			padding: 4px 13px
+			display: inline-block
+			vertical-align: middle
+
+			&._footer
+				position: relative
+				bottom: 10px
+				float: right
+
+			&._mobile
+				position: absolute
+				top: 25px
+				left: 16px
+
 	.examples_content
 		display: flex
 		height: 100%
@@ -182,6 +265,8 @@
 		@media ($large)
 			border-top: none
 			padding: 0
+		@media ($smPhone)
+			padding-bottom: 60px
 
 		&__title
 			@media ($large)
@@ -203,6 +288,11 @@
 				padding: 30px 0
 			@media ($smPhone)
 				padding: 0
+				position: fixed
+				width: 100%
+				bottom: 0
+				z-index: 3
+				background-color: $black
 
 			&_item
 				cursor: pointer
@@ -226,23 +316,27 @@
 			display: inline-block
 
 		&__name
-			font-size: 32px
+			font-size: 40px
 			font-weight: 600
 			display: inline-block
 			vertical-align: middle
 			margin-right: 20px
+			@media ($extraLarge)
+				font-size: 32px
 			@media ($smPhone)
 				display: block
 				font-size: 18px
 
 		&__description
-			font-size: 14px
+			font-size: 20px
 			font-weight: 600
 			letter-spacing: 0.2px
 			color: $grey
 			position: relative
 			padding-left: 17px
 			margin-top: 13px
+			@media ($extraLarge)
+				font-size: 14px
 
 			&:before
 				content: ''
@@ -254,24 +348,6 @@
 				top: 50%
 				transform: translateY(-50%)
 				border-radius: 50%
-			
-		&__category
-			font-weight: bold
-			font-size: 16px
-			letter-spacing: -0.1px
-			color: #E8E8E8
-			border: 1px solid #E8E8E8
-			border-radius: 4px
-			padding: 4px 13px
-			display: inline-block
-			vertical-align: middle
-			position: relative
-			bottom: 10px
-			float: right
-			@media ($smPhone)
-				float: none
-				bottom: 0
-				margin-bottom: 20px
 
 		&__close
 			width: 34px
