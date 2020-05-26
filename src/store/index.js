@@ -16,7 +16,7 @@ const store = new Vuex.Store({
       category: 'composing',
       pageName: 'composing',
       flag: 'video',
-      src: 'on_the_shore.mp4',
+      src: 'alien.mp4',
       poster: 'posterAlien',
       url: null,
     },{
@@ -56,7 +56,7 @@ const store = new Vuex.Store({
       poster: 'posterCalves',
       url: null,
     },{
-      name: 'UI Sounds (for Design Files)',
+      name: 'UI Sounds',
       description: 'Sounds for apps, 2018',
       category: 'sound design',
       pageName: 'soundDesign',

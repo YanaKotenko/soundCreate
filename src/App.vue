@@ -18,10 +18,10 @@
             a.footer_email__link(href='mailto:hello@soundcreate.pro') hello@soundcreate.pro
           .footer_sign We will compose original music for your film, tv show, game, app or any kind of project.
         .footer_social(v-if="$route.path === '/contact' || $route.path === '/about'")
-          a.footer_social_link(href='https://www.instagram.com/' target='_blank') Instagram
-          a.footer_social_link(href='https://www.facebook.com/' target='_blank') Facebook
-          a.footer_social_link(href='https://medium.com/' target='_blank') Medium
-          a.footer_social_link(href='https://www.vimeo.com/' target='_blank') Vimeo
+          a.footer_social_link(href='https://www.instagram.com/soundddcreate/' target='_blank') Instagram
+          a.footer_social_link(href='https://www.facebook.com/SoundCreate-110243537362439' target='_blank') Facebook
+          //- a.footer_social_link(href='https://medium.com/' target='_blank') Medium
+          //- a.footer_social_link(href='https://www.vimeo.com/' target='_blank') Vimeo
 </template>
 
 <script>

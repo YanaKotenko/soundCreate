@@ -25,7 +25,11 @@
 			.examples_footer__title
 				.examples_footer__name_wrap
 					.examples__category._footer(v-if='!isMobile') {{ activeWork.category }}
-					.examples_footer__name {{ activeWork.name }}
+					.examples_footer__name(v-if="activeWork.flag === 'ui'")
+						| {{ activeWork.name }}
+						| (for
+						a(href="https://files.design/sounds" target="_blank") Design Files)
+					.examples_footer__name(v-else) {{ activeWork.name }}
 				.examples_footer__description {{ activeWork.description }}
 			.examples_footer__nav
 				.examples_footer__nav_item(@click='changeProject(-1)') previous project
@@ -36,7 +40,7 @@
 <script>
 	import UiSounds from '../components/UiSounds'
 	// для подгрузки видосов
-	import alien from '../assets/videos/on_the_shore.mp4';
+	import alien from '../assets/videos/alien.mp4';
 	import shore from '../assets/videos/on_the_shore.mp4';
 	import banksy from '../assets/videos/banksy.mp4';
 	import calves from '../assets/videos/calves.mp4';
@@ -326,6 +330,13 @@
 			@media ($smPhone)
 				display: block
 				font-size: 18px
+
+			a
+				color: $white
+				padding-left: 6px
+
+				&:hover
+					text-decoration: none
 
 		&__description
 			font-size: 20px

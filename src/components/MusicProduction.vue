@@ -2,7 +2,7 @@
 .works_container(ref="container")
 	.works_title
 		.works_title__grey music production
-		.works_title__white craft your project with unique sounds
+		.works_title__white bring life through music
 		.arrow_right(
 			@click="setPage('composing')"
 		)

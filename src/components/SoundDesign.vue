@@ -2,7 +2,7 @@
 .works_container(ref="container")
 	.works_title
 		.works_title__grey sound design
-		.works_title__white original music for your project
+		.works_title__white craft your project with unique sounds
 		.arrow_right(
 			@click="setPage('musicProduction')"
 		)
@@ -16,7 +16,8 @@
 					:key='i'
 					@click='openWorkExample(work.name)'
 				)
-					.works_list__title {{ work.name }}
+					.works_list__title(v-if="work.flag === 'ui'") {{ work.name }} for Design Files
+					.works_list__title(v-else) {{ work.name }}
 					.works_list__subtitle {{ work.description }}
 		.works_img
 			img(:src="require('../assets/images/micro.svg')")
