@@ -23,7 +23,7 @@
 
     .about_email
       | new business > 
-      a.about_email__link(href='mailto:hello@soundcreate.pro') hello@soundcreate.pro
+      a.about_email__link(href='mailto:soundddcreate@gmail.com') soundddcreate@gmail.com
 </template>
 
 <script>

@@ -15,7 +15,7 @@
         .flex_wrapper(v-if="$route.path !== '/contact' && $route.path !== '/about'")
           .footer_email
             | new business > 
-            a.footer_email__link(href='mailto:hello@soundcreate.pro') hello@soundcreate.pro
+            a.footer_email__link(href='mailto:soundddcreate@gmail.com') soundddcreate@gmail.com
           .footer_sign We will compose original music for your film, tv show, game, app or any kind of project.
         .footer_social(v-if="$route.path === '/contact' || $route.path === '/about'")
           a.footer_social_link(href='https://www.instagram.com/soundddcreate/' target='_blank') Instagram

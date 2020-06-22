@@ -10,7 +10,7 @@
     | Let’s make
     span something
     .contact_title__text wonderful together.
-  a.contact_email(href='mailto:hello@soundcreate.pro') hello@soundcreate.pro
+  a.contact_email(href='mailto:soundddcreate@gmail.com') soundddcreate@gmail.com
 </template>
 
 <script>
